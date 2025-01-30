@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+```
+# filepath: /c:/last150/fullstackopen/intrademo/intrademo/.gitignore
+node_modules/
