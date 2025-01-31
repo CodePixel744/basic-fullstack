@@ -48,3 +48,23 @@ console.log(s);
 console.log(tr);
 
 //the above one destructuring one
+
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    greet() {
+        console.log(`Hello, my name is ${this.name}`);
+    }
+}
+const adam = new Person('Adam Ondra', 29);
+adam.greet();
+const balaji = new Person('Balaji Nagesh Motkulwar', 23);
+balaji.greet();
+
+
+//we have classes and we make constructors of it
+//we have functions associated with these classes
+//and we create object of the class using new keyword
+//and we can call functions and methods using these objects.
