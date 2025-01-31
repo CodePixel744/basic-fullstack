@@ -1,4 +1,22 @@
+function Header({ course }) {
+  return (
+    <h2>
+      {course}
+    </h2>
+  )
+}
 
+function Content({ part, exercises }) {
+  return (
+    <p>{part} {exercises}</p>
+  )
+}
+
+function Total({ e1, e2, e3 }) {
+  return (
+    <p>Number of exercises {e1 + e2 + e3}</p>
+  )
+}
 
 function App() {
   const course = 'Half Stack application development';
@@ -10,19 +28,11 @@ function App() {
   const exercises3 = 14;
   return (
     <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>
-        Number of exercies {exercises1 + exercises2 + exercises3}
-      </p>
+      <Header course={course} />
+      <Content part={part1} exercises={exercises1} />
+      <Content part={part2} exercises={exercises2} />
+      <Content part={part3} exercises={exercises3} />
+      <Total e1={exercises1} e2={exercises2} e3={exercises3} />
     </div>
   )
 }
