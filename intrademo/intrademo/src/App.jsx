@@ -8,20 +8,28 @@ function Hello(props) {
   )
 }
 function HelloOne(props) {
-  console.log(props);
+  const { name, age } = props;
   const bornYear = () => {
     const yearNow = new Date().getFullYear();
-    return yearNow - props.age;
+    return yearNow - age;
   }
   return (
     <div>
       <p>
-        Hello {props.name}, you are {props.age} years old.
+        Hello {name}, you are {age} years old.
       </p>
       <p>
         So you were probably born in {bornYear()}
       </p>
     </div>
+  )
+}
+
+function HellWorld({ name, age }) {
+  return (
+    <p>
+      MY NAME IS {name} and MY AGE IS {age}
+    </p>
   )
 }
 function App() {
@@ -40,6 +48,7 @@ function App() {
       <Hello name="Vivek" />
       <Hello name="Ganesh" />
       <HelloOne name={name} age={age} />
+      <HellWorld name="hell" age={Infinity} />
     </div>
   )
 }
