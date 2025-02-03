@@ -38,27 +38,27 @@ function App() {
     setnAverage(nbad / 3);
   }
   return (
-    <>
-      <div>
+    <div className="wrapper">
+      <div className="buttons">
         <button onClick={gClick}>GOOD</button>
         <button onClick={nClick}>NEUTRAL</button>
         <button onClick={bClick}>BAD</button>
       </div>
 
-      <div>
-        <span>The value of good is: {good}</span>
-        <span>The value of neutral is:{neutral}</span>
-        <span>The value of bad is:{bad}</span>
+      <div className="spans">
+        <div>The value of good is: {good}</div>
+        <div>The value of neutral is:{neutral}</div>
+        <div>The value of bad is:{bad}</div>
       </div>
       <div>
         The value of total is {total}.
       </div>
-      <div>
+      <div className="averages">
         The value of good average is {gaverage}.
         The value of bad average is {baverage}.
         The value of neutral average is {naverage}.
       </div>
-    </>
+    </div>
   )
 }
 
