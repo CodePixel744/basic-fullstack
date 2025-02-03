@@ -1,5 +1,43 @@
 import { useState } from "react"
 
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the button.
+      </div>
+    )
+  }
+  return (
+    <div>
+      button press history: {
+        props.allClicks.map((clicks, index) => {
+          <span>{clicks}</span>
+        })
+      }
+    </div>
+  )
+}
+
+
+const Button = ({ onClick, text }) => {
+  return (
+    <button onClick={onClick}>
+      {text}
+    </button>
+  );
+}
+
+const ResetButton = ({ setTotal, setAllClicks, setClicks }) => {
+  const handleReset = () => {
+    setTotal(0);
+    setAllClicks([]);
+    setClicks({ left: 0, right: 0 });
+  }
+  return (
+    <button onClick={handleReset}>RESET</button>
+  )
+}
 
 function App() {
   const [clicks, setClicks] = useState({ left: 0, right: 0 });
@@ -25,16 +63,17 @@ function App() {
   return (
     <div>
       {clicks.left}
-      <button onClick={handleLeftClick}>LEFT</button>
+      <Button onClick={handleLeftClick} text='LEFT' />
       {clicks.right}
-      <button onClick={handleRightClick}>RIGHT</button>
+      <Button onClick={handleRightClick} text='RIGHT' />
       <div>
         {allClicks.map((click, index) => (
           <span key={index}>{click}</span>
         ))}
       </div>
+      <History allClicks={allClicks} />
       <p>
-        Total count is {total}.
+      <ResetButton setTotal={setTotal} setAllClicks={setAllClicks} setClicks={setClicks} />
       </p>
     </div>
   )
