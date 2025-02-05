@@ -52,16 +52,20 @@ const App = () => {
         </div>
         <button onClick={generateRandom} className='first'>NEXT ANECDOTE</button>
         <button onClick={() => voteAdder(selected)} className='second'>VOTE</button>
-        <div className='list'>
+        {/* <div className='list'>
+          the votes are:
           {
             copy.map((elem, index) => {
               return <ul key={index}>{elem}</ul>
             })
           }
-        </div>
+        </div> */}
         <button onClick={() => viewCopy(copy)} className='third'>view copy vector</button>
         <div className='fourth'>
           MOST VOTED: {anecdotes[gettingIndex(maxOfAll(copy))]}
+          <p>
+            And it has the votes of <span>{maxOfAll(copy)}</span>.
+          </p>
         </div>
       </div>
     </>

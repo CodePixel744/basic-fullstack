@@ -4,20 +4,20 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to right, #6a11cb, #2575fc);
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
   min-height: 100vh;
   padding: 2em;
-}
-
-.list {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 3em;
-  display: flex;
-  gap: 1em;
 }
 
 .first,
@@ -27,17 +27,47 @@
   width: 10em;
   cursor: pointer;
   color: #fff;
-  background-color: #333;
+  background-color: #34495e;
   border-radius: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1em;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1.1em;
 }
 
 .first:hover,
 .second:hover,
 .third:hover {
-  background-color: #555;
+  background-color: #2c3e50;
+  transform: scale(1.05);
+}
+
+.fourth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.5em;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+span {
+  font-family: 'Courier New', Courier, monospace;
+  color: #2c3e50;
+  font-weight: bold;
 }
