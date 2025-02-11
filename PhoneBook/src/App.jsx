@@ -14,6 +14,13 @@ function App() {
     console.log(event.target.value);
     console.log(typeof (event.target.value));
     let phoneNum = event.target.value;
+    for (let i = 0; i < phoneNum.length; ++i) {
+      if (phoneNum[i] != '1' && phoneNum[i] != '2' && phoneNum[i] != '3' && phoneNum[i] != '4' && phoneNum[i] != '5' && phoneNum[i] != '6' && phoneNum[i] != '7' && phoneNum[i] != '8' && phoneNum[i] != '9' && phoneNum[i] != '0') {
+        alert('enter valid digits');
+        setNewPhone('');
+        return;
+      }
+    }
     if (phoneNum.length > 10) {
       alert('Enter the valid phone number.');
       setNewPhone('');
