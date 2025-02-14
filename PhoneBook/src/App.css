@@ -8,12 +8,12 @@
 
 /* Background gradient for the entire page */
 html {
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(to right, #4facfe, #00f2fe);
 }
 
 /* Main wrapper styling */
 .wrapper {
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +39,7 @@ html {
   flex-direction: column;
   gap: 1em;
   padding: 1em;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #ffffff;
 }
@@ -47,7 +47,7 @@ html {
 /* Input field styling */
 .wrapper1 .form1 input {
   padding: 0.5em;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 4px;
   width: 100%;
   max-width: 300px;
@@ -55,7 +55,7 @@ html {
 
 /* Button styling within the inner wrapper */
 .wrapper1 button {
-  background-color: #ff6f61;
+  background-color: #007bff;
   color: white;
   padding: 0.5em 1em;
   border: none;
@@ -65,7 +65,7 @@ html {
 }
 
 .wrapper1 button:hover {
-  background-color: #e55b50;
+  background-color: #0056b3;
   color: white;
 }
 
@@ -77,7 +77,7 @@ html {
 
 .wrapper2 ul li {
   padding: 0.5em;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
   width: 100%;
   max-width: 300px;
   text-align: left;
@@ -96,7 +96,7 @@ html {
 
   .wrapper1 button {
     width: 100%;
-    background-color: #ff6f61;
+    background-color: #007bff;
   }
 }
 

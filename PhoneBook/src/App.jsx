@@ -5,6 +5,7 @@ function App() {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleNameChange = (event) => {
     setNewName(event.target.value);
@@ -16,13 +17,13 @@ function App() {
     let phoneNum = event.target.value;
     for (let i = 0; i < phoneNum.length; ++i) {
       if (phoneNum[i] != '1' && phoneNum[i] != '2' && phoneNum[i] != '3' && phoneNum[i] != '4' && phoneNum[i] != '5' && phoneNum[i] != '6' && phoneNum[i] != '7' && phoneNum[i] != '8' && phoneNum[i] != '9' && phoneNum[i] != '0') {
-        alert('enter valid digits');
+        setErrorMessage('enter valid digits');
         setNewPhone('');
         return;
       }
     }
     if (phoneNum.length > 10) {
-      alert('Enter the valid phone number.');
+      setErrorMessage('Enter the valid phone number.');
       setNewPhone('');
       return;
     }
@@ -48,25 +49,25 @@ function App() {
     if (!nameflag) {
       console.log(`Entering here `);
       if (newName === '') {
-        alert('Please enter a valid Name.');
+        setErrorMessage('Please enter a valid Name.');
         return;
       }
     }
     if (!phoneflag) {
       console.log(`second entering here.`);
       if (newPhone === '') {
-        alert('Please enter a valid phone number.');
+        setErrorMessage('Please enter a valid phone number.');
         return;
       }
     }
     if (nameflag && phoneflag) {
-      alert(`choose both new name and new phone.`);
+      setErrorMessage(`choose both new name and new phone.`);
     }
     else if (nameflag) {
-      alert(`choose new name`);
+      setErrorMessage(`choose new name`);
     }
     else if (phoneflag) {
-      alert(`choose new phone.`);
+      setErrorMessage(`choose new phone.`);
     }
     else {
       const newPerson = { name: newName, phone: newPhone };
@@ -81,25 +82,25 @@ function App() {
       <div className="wrapper1">
         <h2>Phonebook</h2>
         <form onSubmit={formSubmit} className='form1'>
-          <div>
-            name: <input type='text' value={newName} onChange={handleNameChange} />
+          <div className="input-group">
+            <label htmlFor="name">Name:</label>
+            <input type='text' id="name" value={newName} onChange={handleNameChange} />
           </div>
-          <div>
-            number: <input type='text' value={newPhone} onChange={handlePhoneChange} />
+          <div className="input-group">
+            <label htmlFor="phone">Number:</label>
+            <input type='text' id="phone" value={newPhone} onChange={handlePhoneChange} />
           </div>
-          <button type="submit">add</button>
+          <button type="submit" className="submit-btn">Add</button>
         </form>
+        {errorMessage && <p className="error">{errorMessage}</p>}
       </div>
       <div className="wrapper2">
         <h2>Numbers</h2>
-        {
-          <ul>
-            {persons.map((person, index) => (
-              <li key={index}>{person.name} {person.phone}</li>
-            ))}
-          </ul>
-        }
-        {/* <div>debug: {newName} {newPhone}</div> */}
+        <ul className="person-list">
+          {persons.map((person, index) => (
+            <li key={index} className="person-item">{person.name} {person.phone}</li>
+          ))}
+        </ul>
       </div>
     </div>
   )
