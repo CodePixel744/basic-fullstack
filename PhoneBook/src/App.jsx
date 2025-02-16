@@ -1,11 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+import axios from 'axios'
 
 function App() {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    axios.get('http://localhost:3002/persons')
+      .then(response => {
+        setPersons(response.data)
+        console.log(response.data);
+      })
+      .catch(error => console.log(error));
+  }, [])
 
   const handleNameChange = (event) => {
     setNewName(event.target.value);
@@ -62,18 +72,22 @@ function App() {
     }
     if (nameflag && phoneflag) {
       setErrorMessage(`choose both new name and new phone.`);
+      return;
     }
     else if (nameflag) {
       setErrorMessage(`choose new name`);
+      return;
     }
     else if (phoneflag) {
       setErrorMessage(`choose new phone.`);
+      return;
     }
     else {
       const newPerson = { name: newName, phone: newPhone };
       setPersons([...persons, newPerson]);
       setNewName('');
       setNewPhone('');
+      setErrorMessage('');
     }
   }
 
@@ -98,7 +112,7 @@ function App() {
         <h2>Numbers</h2>
         <ul className="person-list">
           {persons.map((person, index) => (
-            <li key={index} className="person-item">{person.name} {person.phone}</li>
+            <li key={index} className="person-item">{person.name} {person.number}</li>
           ))}
         </ul>
       </div>
