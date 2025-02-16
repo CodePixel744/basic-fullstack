@@ -1,5 +1,6 @@
 import CNotes from './CNotes';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 /* eslint-disable react/prop-types */
 import './Render.css';
 
@@ -12,19 +13,6 @@ const Render = ({ notes }) => {
         setNotes(notes);
     }, [notes]);
 
-    const addNote = (event) => {
-        event.preventDefault();
-        if (newNote.trim() === '') return;
-
-        const noteObject = {
-            content: newNote,
-            important: Math.random() < 0.5,
-            id: String(noteList.length + 1)
-        };
-        setNotes(noteList.concat(noteObject));
-        setNewNote('');
-    };
-
     const handleNoteChange = (event) => {
         setNewNote(event.target.value);
     };
@@ -35,6 +23,20 @@ const Render = ({ notes }) => {
         setShowAll(!showAll);
     };
 
+    const addNote = (event) => {
+        event.preventDefault();
+        const noteObject = {
+            id: (noteList.length + 1).toString(),
+            /*id depends on the length of array at that instant  */
+            content: newNote,
+            important: Math.random() < 0.5,
+        }
+        const promise = axios.post(`http://localhost:3001/notes`, noteObject)
+        promise.then(response => {
+            console.log(response);
+        })
+    }
+
     return (
         <div className="render-wrapper">
             <h1>NOTES</h1>
@@ -42,11 +44,11 @@ const Render = ({ notes }) => {
                 show {showAll ? 'important' : 'all'}
             </button>
             {notesToShow.map((elem) => (
-                <CNotes key={elem.id} noteObject={elem} />
+                <CNotes key={elem.id} noteObject={elem} setImportance={toggleShowImportant} />
             ))}
             <form onSubmit={addNote}>
                 <input type="text" value={newNote} onChange={handleNoteChange} />
-                <button type="submit">SAVE</button>
+                <button type="submit" className='submitter'>SAVE</button>
             </form>
         </div>
     );

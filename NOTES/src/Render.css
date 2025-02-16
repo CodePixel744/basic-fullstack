@@ -1,12 +1,57 @@
+/* Container Styles */
 .render-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
-.render-wrapper h1 {
-    font-family: cursive;
-    margin-bottom: 20px;
+/* Button Styles */
+.render-wrapper button,
+.submitter {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.render-wrapper button {
+    background-color: #4CAF50; /* Green */
+}
+
+.render-wrapper button:hover {
+    background-color: #45a049; /* Darker Green */
+}
+
+.submitter {
+    background-color: #008CBA; /* Blue */
+}
+
+.submitter:hover {
+    background-color: #007bb5; /* Darker Blue */
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Input Styles */
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input:focus {
+    border-color: #4CAF50; /* Green */
+    outline: none;
 }
