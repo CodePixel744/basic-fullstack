@@ -6,7 +6,7 @@ import './Render.css';
 
 const Render = ({ notes }) => {
     const [noteList, setNotes] = useState(notes);
-    const [newNote, setNewNote] = useState("a new note ");
+    const [newNote, setNewNote] = useState("");
     const [showAll, setShowAll] = useState(true);
 
     useEffect(() => {
@@ -36,6 +36,10 @@ const Render = ({ notes }) => {
             content: newNote,
             important: false
         }
+        if (newNote.trim() === "") {
+            alert("Please enter a valid note.");
+            return;
+        }
         const promise = axios.post(`http://localhost:3001/notes`, noteObject)
         promise.then(response => {
             console.log(response);
@@ -51,7 +55,7 @@ const Render = ({ notes }) => {
     return (
         <div className="render-wrapper">
             <div className="heading">
-            <h1>NOTES</h1>
+                <h1>NOTES</h1>
             </div>
             <button onClick={toggleShowImportant}>
                 show {showAll ? 'important' : 'all'}
