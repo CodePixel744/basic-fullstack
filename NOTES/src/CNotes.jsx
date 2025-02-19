@@ -1,18 +1,22 @@
 /* eslint-disable react/prop-types */
 import './CNotes.css'
+import { useState } from 'react';
 
-const CNotes = ({ noteObject, setImportance }) => {
+const CNotes = ({ noteObject }) => {
+    const [important, setImportant] = useState(noteObject.important);
+
     const toggleImportance = () => {
-        console.log(noteObject.important);
-        setImportance({ ...noteObject, important: !noteObject.important });
+        noteObject.important = !noteObject.important;
+        setImportant(noteObject.important);
     }
+
     return (
         <div className="cnotes-wrapper">
             <h2>{noteObject.id}</h2>
             <div className="cnotes-iwrapper">
                 <h3>{noteObject.content}</h3>
-                <h4>{noteObject.important}</h4>
-                <button onClick={toggleImportance}>{noteObject.important ? `make it unimportant` : `make it important`}</button>
+                <h4>{important.toString()}</h4>
+                <button onClick={toggleImportance}>{important ? `make it unimportant` : `make it important`}</button>
             </div>
         </div>
     )
